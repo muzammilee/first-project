@@ -1,5 +1,6 @@
 const mongoose =require ('mongoose')
 
+//taking mongo url
 async function dbConnect () {
     await mongoose.connect(process.env.MONGO_URL,{
         dbname:'HudaBooks'
@@ -15,5 +16,6 @@ async function dbConnect () {
 })
 
 }
+
 
 module.exports= dbConnect

@@ -1,4 +1,4 @@
-const express=require ('express')
+const express= require('express')
 require('dotenv').config()
 const dbConnect =require ('./config/conection')
 
@@ -9,6 +9,11 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('./public'))
+app.set('view engine','ejs')
+
+const common=require("./routes/commonRouter")
+const { signupPost } = require('./controller/authcontroller')
+app.use("/",common)
 
 dbConnect().then(()=>{
     app.listen(port,()=>{
